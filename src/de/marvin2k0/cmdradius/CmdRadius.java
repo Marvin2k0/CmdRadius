@@ -160,9 +160,6 @@ public class CmdRadius extends JavaPlugin implements Listener, CommandExecutor
 
         if (isCommandBlocked(cmd))
         {
-            event.getPlayer().sendMessage(cmd + " ist blockiert!");
-            //TODO: check if player is inside of one of the radius
-
             for (String str : this.getConfig().getStringList("commands"))
             {
                 if (str.contains(cmd))
@@ -178,16 +175,15 @@ public class CmdRadius extends JavaPlugin implements Listener, CommandExecutor
 
                     Location location = new Location(Bukkit.getWorld(world), x, y, z);
 
-                    if (!insideLocation(event.getPlayer().getLocation(), location, radius))
+                    if (insideLocation(event.getPlayer().getLocation(), location, radius))
                     {
-                        event.setCancelled(true);
-                        event.getPlayer().sendMessage("§c" + cmd + " ist hier nicht erlaubt!");
+                        return;
                     }
                 }
             }
 
-
-
+            event.setCancelled(true);
+            event.getPlayer().sendMessage("§cDu bist zu weit weg!");
         }
     }
 
