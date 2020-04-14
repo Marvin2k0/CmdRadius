@@ -1,0 +1,11 @@
+name: CmdRadius_by_Marvin2k0
+author: Marvin2k0
+version: 1.0
+main: de.marvin2k0.cmdradius.CmdRadius
+commands:
+  cmdradius:
+    description: Erlaube bestimmte Befehle innerhalb von Regionen
+    usage: /cmdradius <befehl> <radius>
+    permission: command.radius
+    aliases:
+      - cr
